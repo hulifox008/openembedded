@@ -6,7 +6,7 @@ PRIORITY = "optional"
 # bump this on every change in contrib/python/generate-manifest-2.7.py
 INC_PR = "ml1"
 
-DEFAULT_PREFERENCE = "-27"
+#DEFAULT_PREFERENCE = "-27"
 
 PYTHON_MAJMIN = "2.7"
 
