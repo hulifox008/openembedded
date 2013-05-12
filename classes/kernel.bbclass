@@ -14,7 +14,7 @@ python __anonymous () {
     kerneltype = bb.data.getVar('KERNEL_IMAGETYPE', d, 1) or ''
     if kerneltype == 'uImage':
     	depends = bb.data.getVar("DEPENDS", d, 1)
-    	depends = "%s u-boot-mkimage-native" % depends
+    	depends = "%s u-boot-sunxi" % depends
     	bb.data.setVar("DEPENDS", depends, d)
 
     image = bb.data.getVar('INITRAMFS_IMAGE', d, True)
@@ -547,7 +547,7 @@ do_uboot_mkimage() {
     fi
 }
 
-addtask uboot_mkimage before do_install after do_compile
+#addtask uboot_mkimage before do_install after do_compile
 
 KERNEL_IMAGE_BASE_NAME ?= "${KERNEL_IMAGETYPE}-${PV}-${PR}-${MACHINE}"
 KERNEL_IMAGE_SYMLINK_NAME ?= "${KERNEL_IMAGETYPE}-${MACHINE}"
