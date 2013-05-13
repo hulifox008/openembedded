@@ -16,6 +16,7 @@
 #
 
 SRC_URI += "file://sunxi_env"
+DEPENDS += "u-boot-sunxi"
 
 # Install basic files only
 IMAGE_INSTALL = "\
@@ -25,9 +26,12 @@ base-files \
 base-passwd \
 bash \
 vim \
-#openssh \
+openssh \
+apache2 \
+vsftpd \
 e2fsprogs \
 e2fsprogs-tune2fs \
+procps \
 "
 IMAGE_LINGUAS = ""
 
