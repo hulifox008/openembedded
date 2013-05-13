@@ -1,0 +1,13 @@
+baudrate=115200
+bootargs=console=ttyS0,115200 root=/dev/mmcblk0p1 rootdelay=2
+bootcmd=mmc read 0x50000000 0x800 $envsize; bootm 0x50000000
+bootdelay=3
+bootenv=uEnv.txt
+console=ttyS0,115200
+ethact=wemac
+ethaddr=00:11:22:33:44:55
+kernel=uImage
+loglevel=8
+stderr=serial
+stdin=serial
+stdout=serial
