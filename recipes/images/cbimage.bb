@@ -15,7 +15,10 @@
 # Maintainer: Martin Lund <mgl@doredevelopment.dk>
 #
 
-SRC_URI += "file://sunxi_env"
+SRC_URI += "file://sunxi_env \
+            file://resize_partition.sh \
+            file://resize_fs.sh \
+            "
 DEPENDS += "u-boot-sunxi"
 
 # Install basic files only
@@ -47,6 +50,11 @@ IMAGE_FSTYPES = "ext4"
 
 inherit image
 
+rootfs_postproc() {
+    install -m 0755 ${WORKDIR}/resize_partition.sh ${IMAGE_ROOTFS}/etc/rcS.d/S98resize_partition.sh
+    install -m 0755 ${WORKDIR}/resize_fs.sh ${IMAGE_ROOTFS}/etc/rcS.d/S99resize_fs.sh
+}
+
 image_postproc() {
 #Assemble final image that can be written to SD card.
 OUTPUT=cubieboard_sd.img
@@ -73,3 +81,4 @@ popd
 }
 
 IMAGE_POSTPROCESS_COMMAND = "image_postproc"
+ROOTFS_POSTPROCESS_COMMAND = "rootfs_postproc"
