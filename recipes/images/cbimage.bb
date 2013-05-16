@@ -27,6 +27,7 @@ kernel \
 kernel-modules \
 base-files \
 base-passwd \
+initscripts \
 bash \
 vim \
 openssh \
