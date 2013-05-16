@@ -35,6 +35,9 @@ vsftpd \
 e2fsprogs \
 e2fsprogs-tune2fs \
 procps \
+hdparm \
+smartmontools \
+coreutils \
 "
 IMAGE_LINGUAS = ""
 
