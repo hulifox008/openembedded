@@ -1,6 +1,6 @@
 baudrate=115200
-bootargs=console=ttyS0,115200 root=/dev/mmcblk0p1 rootdelay=2
-bootcmd=mmc read 0x50000000 0x800 $envsize; bootm 0x50000000
+bootargs=console=ttyS0,115200 root=/dev/mmcblk0p2 rootdelay=2
+bootcmd=fatload mmc 0:1 0x50000000 uImage; bootm 0x50000000
 bootdelay=3
 bootenv=uEnv.txt
 console=ttyS0,115200

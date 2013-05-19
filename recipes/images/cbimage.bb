@@ -64,21 +64,27 @@ image_postproc() {
 OUTPUT=cubieboard_sd.img
  
 pushd ${DEPLOY_DIR_IMAGE}
+
+rm -fr boot
+mkdir boot
+cp uImage-cubieboard.bin boot/uImage
+dd if=/dev/zero of=boot.fat bs=1M count=8
+makebootfat -o boot.fat -b mbrfat.bin boot
  
 dd if=/dev/zero of=${OUTPUT} bs=1M count=1
-dd if=uImage-cubieboard.bin of=${OUTPUT} oflag=append conv=notrunc
-truncate -s 8M ${OUTPUT}
+dd if=boot.fat of=${OUTPUT} oflag=append conv=notrunc
 dd if=${IMAGE_LINK_NAME}.ext4 of=${OUTPUT} oflag=append conv=notrunc
 dd if=sunxi-spl.bin of=${OUTPUT} bs=1024 seek=8 conv=notrunc
 dd if=u-boot.bin of=${OUTPUT} bs=1024 seek=32 conv=notrunc
 
-printf "envsize=0x%x" `ls -sL --block-size=512 uImage-cubieboard.bin | cut -d ' ' -f 1` >> ${WORKDIR}/sunxi_env
+#printf "envsize=0x%x" `ls -sL --block-size=512 uImage-cubieboard.bin | cut -d ' ' -f 1` >> ${WORKDIR}/sunxi_env
  
 mkenvimage -s 131072 -o sunxi_env.bin ${WORKDIR}/sunxi_env
 dd if=sunxi_env.bin of=${OUTPUT} bs=1024 seek=544 conv=notrunc
 
 sfdisk -f -uS -L ${OUTPUT} << EOF
-16384,,L
+2048,16384,b
+18432,,L
 EOF
  
 popd
