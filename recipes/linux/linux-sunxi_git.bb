@@ -5,7 +5,7 @@ PR = "r1"
 
 
 SRCREV = "c96ea5293f163d16f99822fdc78f902184628a2c"
-PV = "3.4.43+gitr${SRCREV}"
+PV = "3.4.43"
 SRC_URI = "git://github.com/hulifox008/linux-sunxi.git;branch=fox-3.4;protocol=git \
            file://defconfig_cubieboard"
 

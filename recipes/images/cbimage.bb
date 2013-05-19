@@ -19,7 +19,9 @@ SRC_URI += "file://sunxi_env \
             file://resize_partition.sh \
             file://resize_fs.sh \
             "
-DEPENDS += "u-boot-sunxi"
+DEPENDS += "u-boot-sunxi \
+            makebootfat-native \
+            "
 
 # Install basic files only
 IMAGE_INSTALL = "\
