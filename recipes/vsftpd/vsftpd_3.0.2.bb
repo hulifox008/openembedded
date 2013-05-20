@@ -3,7 +3,7 @@ SECTION = "console/network"
 LICENSE = "GPL"
 PR = "r4"
 
-DEPENDS = "libcap"
+DEPENDS = "libcap libpam"
 
 SRC_URI = "https://security.appspot.com/downloads/vsftpd-3.0.2.tar.gz \
            file://init \

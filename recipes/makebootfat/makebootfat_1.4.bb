@@ -9,6 +9,7 @@ SRC_URI = "ftp://ftp.mirrorservice.org/sites/distfiles.gentoo.org/distfiles/make
 inherit autotools
 
 do_install_append(){
+    install -m 0755 -d ${DEPLOY_DIR_IMAGE}
     install -m 0644 ${S}/mbrfat.bin ${DEPLOY_DIR_IMAGE}/mbrfat.bin
 }
 
