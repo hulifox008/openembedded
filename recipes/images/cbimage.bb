@@ -41,6 +41,7 @@ procps \
 hdparm \
 smartmontools \
 coreutils \
+iptables \
 "
 IMAGE_LINGUAS = ""
 
